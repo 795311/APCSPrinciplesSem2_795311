@@ -21,8 +21,8 @@ function bubbleSort("total"){
   var length = countrydata.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].females;
-        var b = countrydata[j+1].females;
+        var a = countrydata[j].total;
+        var b = countrydata[j+1].total;
         if (a > b) {
           var temp = a;
           a = b;
@@ -35,8 +35,8 @@ function bubbleSort("age"){
   var length = countrydata.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].females;
-        var b = countrydata[j+1].females;
+        var a = countrydata[j].age;
+        var b = countrydata[j+1].age;
         if (a > b) {
           var temp = a;
           a = b;
@@ -49,8 +49,8 @@ function bubbleSort("males"){
   var length = countrydata.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].females;
-        var b = countrydata[j+1].females;
+        var a = countrydata[j].males;
+        var b = countrydata[j+1].males;
         if (a > b) {
           var temp = a;
           a = b;
