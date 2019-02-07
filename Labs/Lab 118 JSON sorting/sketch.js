@@ -1,28 +1,27 @@
-var countrydata = [];
+var SophiesData = [];
+
 function preload(){
-  countrydata = loadJSON("population.json");
-  var = "total"
-  var = "males"
-  var = "age"
+  SophiesData = loadJSON("population.json");
+
 }
 
 function setup() {
 
   noCanvas();
-  bubbleSort(countrydata);
-  console.log(countrydata);
+  bubbleSort();
+  console.log(SophiesData);
 }
 
 function draw(){
 
 }
 
-function bubbleSort("total"){
-  var length = countrydata.length;
+function bubbleSort(){
+  var length = SophiesData.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].total;
-        var b = countrydata[j+1].total;
+        var a = SophiesData[j].total;
+        var b = SophiesData[j+1].total;
         if (a > b) {
           var temp = a;
           a = b;
@@ -31,12 +30,12 @@ function bubbleSort("total"){
       }
   }
 }
-function bubbleSort("age"){
-  var length = countrydata.length;
+function bubbleSort(){
+  var length = SophiesData.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].age;
-        var b = countrydata[j+1].age;
+        var a = SophiesData[j].age;
+        var b = SophiesData[j+1].age;
         if (a > b) {
           var temp = a;
           a = b;
@@ -45,12 +44,12 @@ function bubbleSort("age"){
       }
   }
 }
-function bubbleSort("males"){
-  var length = countrydata.length;
+function bubbleSort(){
+  var length = SophiesData.length;
   for(var i = 0; i < length; i--){
       for(var j = 0; i < (length - i - 1); i++){
-        var a = countrydata[j].males;
-        var b = countrydata[j+1].males;
+        var a = SophiesData[j].males;
+        var b = SophiesData[j+1].males;
         if (a > b) {
           var temp = a;
           a = b;
@@ -59,3 +58,4 @@ function bubbleSort("males"){
       }
   }
 }
+console.log(SophiesData);
