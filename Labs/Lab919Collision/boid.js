@@ -43,7 +43,8 @@ if (d<275){
     push() // push or save the current coord system into the stack
       translate(this.loc.x, this.loc.y);
       rotate(this.vel.heading()+radians(90));//points each boids in the direction of their velocitu
-      line(this.loc.x, this.loc.y, Ball.loc.x, Ball.loc.y);
+      stroke("gold");
+      line(this.loc.x, this.loc.y, 5, 5);
   pop()  //  pop or restore the coordianate system from the stack
 
   }
