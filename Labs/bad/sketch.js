@@ -9,13 +9,13 @@ function setup() {
   background(0,0,0);
   loadboid(200); //loads 200 boids
   frameRate(120); //sets the framerate at smooth 120 fps
-  chaser = new Ball(createVector(width/2, height/2), createVector(1,2), 25, color(0, 0, 0));
+  chaser = new Ball(createVector(width/2, height/2), createVector(1,2), 25, color(255, 0, 0));
 }//creates a new ball that is used as the chaser
 
 function draw() {
   background(20,20,20,60); //black background with an opactiy of 60
   chaser.run();
-
+  
 for(var i= 0; i<boids.length; i++){
  boids[i].run();
 }

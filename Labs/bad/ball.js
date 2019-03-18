@@ -21,8 +21,8 @@ function Ball(location, velocity, radius, col){ //gives the parameters of the ba
   //checkEdges()reverses speed when the ball touches an edge
   this.render = function (){
     fill(this.col);
-    stroke("black");
-    ellipse(this.loc.x, this.loc.y, this.rad, this.rad);
+    stroke("red")
+    line(this.loc.x, this.loc.y, this.rad, this.rad);
   }
   }
 

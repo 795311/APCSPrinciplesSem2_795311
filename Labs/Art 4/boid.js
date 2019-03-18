@@ -44,7 +44,7 @@ if (d<275){
       translate(this.loc.x, this.loc.y);
       rotate(this.vel.heading()+radians(90));//points each boids in the direction of their velocitu
       stroke("gold");
-      line(this.loc.x, this.loc.y, 5, 5);
+      bezier(this.loc.x, this.loc.y, 5, 5, 5, 5, 5, 5);
   pop()  //  pop or restore the coordianate system from the stack
 
   }
