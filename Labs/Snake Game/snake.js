@@ -6,8 +6,8 @@ function Snake(loc, vel){
 
 this.run = function(){
   this.update();
-  this.render();
   this.killed();
+  this.render();
 }
 
 this.update = function(){

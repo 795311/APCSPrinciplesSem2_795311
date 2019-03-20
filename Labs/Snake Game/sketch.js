@@ -2,6 +2,7 @@ var snake; //snake object
 var w = 20;
 var colo, rows;
 var food = []; //food array
+var rock;
 var start = "true" //begins with start screen
 var font;
 var score = 0;
@@ -23,8 +24,8 @@ function setup(){
 function draw(){
   background(0, 0, 255);
   fill(random(225), random(255), random(250));
-  snake.run();
   textSize(30);
+  snake.run();
   //location of score
   text(score, 100, 100);
   for(var i = 0; i < food.length; i++){
@@ -87,6 +88,10 @@ function loadFood(numFood){ //function for location of food
   food.push(j);
   //food.push(newFood);
 }
+function loadRock(){
+
+}
+
 function gameStart(){
   if(start == "true"){
       noStroke();
@@ -118,10 +123,11 @@ function deadGame(){
   if(snake.alive == "true"){
     snake = 0
     score = 0;
+    textAlign(CENTER);
+    textSize(60);
+    text("You Lose...", 400, 425)
   rect(800,800)
   fill(0, 0, 0);
-  textAlign(CENTER);
-  textSize(60);
-  text("You Lose...", 400, 425)
+
   }
 }
