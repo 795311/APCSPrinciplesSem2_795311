@@ -18,7 +18,6 @@ function setup(){
   cnv.position((windowWidth-width)/2, 30);
   loadSnake();
   loadFood(1);
-
 }
 
 function draw(){
@@ -28,6 +27,7 @@ function draw(){
   snake.run();
   //location of score
   text(score, 100, 100);
+  rock.run();
   for(var i = 0; i < food.length; i++){
     food[i].run();
 }
@@ -89,7 +89,11 @@ function loadFood(numFood){ //function for location of food
   //food.push(newFood);
 }
 function loadRock(){
-
+  var locX = 200
+  var locY = 200
+  var loc = createVector(locX, locY);
+  var r = new Rock(loc);
+  rock.push(r);
 }
 
 function gameStart(){
