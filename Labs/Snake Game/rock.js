@@ -8,7 +8,7 @@ function Rock(loc){
   }
 
  this.render = function(){
-   fill(255, 0, 0);
+   fill(91, 64, 24);
    rect(this.loc.x, this.loc.y, 20, 20);
  }
 

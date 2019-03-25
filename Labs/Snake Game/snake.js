@@ -31,11 +31,14 @@ this.render = function(){
   for(var i = 0; i < this.segments.length; i++){
        //snake color
        fill(255, 255, 255);
-       stroke(0, 225, 225);
+       //stroke(0, 225, 225);
        rect(this.segments[i].x, this.segments[i].y, 20, 20)
+       noStroke();
      }
+     //stroke(0, 255, 255);
      fill(255);
      rect(this.loc.x, this.loc.y, 20, 20);
+     noStroke();
    }
 
    this.killed = function(){
