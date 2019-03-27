@@ -6,6 +6,7 @@ var rock = [];
 var start = "true" //begins with start screen
 var font;
 var score = 0;
+var img;
 var numSeg = 1;
 
 
@@ -16,6 +17,10 @@ function setup(){
   var colo = width/w;
   var rows = height/w;
   cnv.position((windowWidth-width)/2, 30);
+  img = loadImage("cobblestone.png");
+  img2 = loadImage("notchapple.png");
+  img3 = loadImage("creeperbody.png");
+  img4 = loadImage("creeper_head2.jpg");
   loadSnake();
   loadFood(1);
   loadRock(25);

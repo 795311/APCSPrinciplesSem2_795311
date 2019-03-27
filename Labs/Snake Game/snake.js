@@ -32,12 +32,12 @@ this.render = function(){
        //snake color
        fill(255, 255, 255);
        //stroke(0, 225, 225);
-       rect(this.segments[i].x, this.segments[i].y, 20, 20)
+       image(img3, this.segments[i].x, this.segments[i].y, 20, 20)
        noStroke();
      }
      //stroke(0, 255, 255);
      fill(255);
-     rect(this.loc.x, this.loc.y, 20, 20);
+     image(img4, this.loc.x, this.loc.y, 20, 20);
      noStroke();
    }
 

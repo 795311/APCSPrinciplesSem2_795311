@@ -9,7 +9,7 @@ function Food(loc){
 
  this.render = function(){
    fill(255, 0, 0);
-   rect(this.loc.x, this.loc.y, 20, 20);
+  image(img2, this.loc.x, this.loc.y, img.width/16, img.height/16);
  }
 
 }
