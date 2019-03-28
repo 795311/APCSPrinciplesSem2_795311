@@ -3,6 +3,7 @@ var w = 20;
 var colo, rows;
 var food = []; //food array
 var rock = [];
+var potion = [];
 var start = "true" //begins with start screen
 var font;
 var score = 0;
@@ -21,9 +22,11 @@ function setup(){
   img2 = loadImage("notchapple.png");
   img3 = loadImage("creeperbody.png");
   img4 = loadImage("creeper_head2.jpg");
+  img5 = loadImage("splashpotion.png");
   loadSnake();
   loadFood(1);
   loadRock(25);
+  loadPotion(1);
 }
 
 function draw(){
@@ -41,8 +44,12 @@ function draw(){
   for(var i = 0; i < food.length; i++){
     food[i].run();
 }
+    for(var i = 0; i < potion.length; i++){
+      potion[i].run();
+  }
 checkLoc();
 checkRock();
+checkPotion();
 gameStart();
 deadGame();
 
@@ -56,21 +63,32 @@ function checkLoc(){ //eating the food, then splicing it once the snake collides
       //splices food(gets rid of food and puts it in new location)
       food.splice(i, 1);
       loadFood(1);
+      frameRate(10);
       snake.segments.push(createVector(0, 0));
       score = score + 1
 
     }
   }
 }
-function checkRock(){ //eating the food, then splicing it once the snake collides
+function checkRock(){ //hitting the rock then dying
   for(var i = 0; i < rock.length; i++){
     var distX = rock[i].loc.x - snake.loc.x;
     var distY = rock[i].loc.y - snake.loc.y;
     if(distX == (0) && distY == (0)){
-      //splices food(gets rid of food and puts it in new location)
       snake.alive = "true";
 
 
+    }
+  }
+}
+function checkPotion(){ //eating the potion, then lower the frame rate
+  for(var i = 0; i < potion.length; i++){
+    var distX = potion[i].loc.x - snake.loc.x;
+    var distY = potion[i].loc.y - snake.loc.y;
+    if(distX == (0) && distY == (0)){
+      potion.splice(i, 1);
+      loadPotion(1);
+      frameRate(7);
     }
   }
 }
@@ -123,7 +141,18 @@ function loadRock(numRock){ //function for location of food
   }
   //food.push(newFood);
 }
-
+function loadPotion(numPotion){ //function for location of food
+  for(var i = 0; i < numPotion; i++){
+  var min = 1;
+  var max = 39;
+  var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var loc = createVector(locX, locY);
+  var j = new Potion(loc);
+  potion.push(j);
+  }
+  //food.push(newFood);
+}
 
 
 function gameStart(){
