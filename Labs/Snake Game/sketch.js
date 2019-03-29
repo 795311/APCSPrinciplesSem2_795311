@@ -4,6 +4,8 @@ var colo, rows;
 var food = []; //food array
 var rock = [];
 var potion = [];
+var potion2 = [];
+var diamond = [];
 var start = "true" //begins with start screen
 var font;
 var score = 0;
@@ -23,15 +25,20 @@ function setup(){
   img3 = loadImage("creeperbody.png");
   img4 = loadImage("creeper_head2.jpg");
   img5 = loadImage("splashpotion.png");
+  img6 = loadImage("splashSwift.gif");
+  img7 = loadImage("background1.png");
+  img8 = loadImage("Diamond.png");
   loadSnake();
   loadFood(1);
+  loadDiamond(1);
   loadRock(25);
   loadPotion(1);
+  loadPotion2(1);
 }
 
 function draw(){
   if(snake.alive == "false"){
-    background(0, 0, 255);
+    background(img7);
   }
   fill(random(225), random(255), random(250));
   textSize(30);
@@ -47,9 +54,17 @@ function draw(){
     for(var i = 0; i < potion.length; i++){
       potion[i].run();
   }
+  for(var i = 0; i < potion2.length; i++){
+    potion2[i].run();
+}
+for(var i = 0; i < diamond.length; i++){
+  diamond[i].run();
+}
 checkLoc();
+checkPotion2();
 checkRock();
 checkPotion();
+checkDiamond();
 gameStart();
 deadGame();
 
@@ -66,6 +81,22 @@ function checkLoc(){ //eating the food, then splicing it once the snake collides
       frameRate(10);
       snake.segments.push(createVector(0, 0));
       score = score + 1
+
+    }
+  }
+}
+function checkDiamond(){ //eating the food, then splicing it once the snake collides
+  for(var i = 0; i < diamond.length; i++){
+    var distX = diamond[i].loc.x - snake.loc.x;
+    var distY = diamond[i].loc.y - snake.loc.y;
+    if(distX == (0) && distY == (0)){
+      //splices food(gets rid of food and puts it in new location)
+      diamond.splice(i, 1);
+      loadDiamond(1);
+      frameRate(10);
+      snake.segments.push(createVector(0, 0));
+      score = score + 5;
+      loadFood(5);
 
     }
   }
@@ -89,6 +120,17 @@ function checkPotion(){ //eating the potion, then lower the frame rate
       potion.splice(i, 1);
       loadPotion(1);
       frameRate(7);
+    }
+  }
+}
+function checkPotion2(){ //eating the potion, then lower the frame rate
+  for(var i = 0; i < potion2.length; i++){
+    var distX = potion2[i].loc.x - snake.loc.x;
+    var distY = potion2[i].loc.y - snake.loc.y;
+    if(distX == (0) && distY == (0)){
+      potion2.splice(i, 1);
+      loadPotion2(1);
+      frameRate(15);
     }
   }
 }
@@ -153,8 +195,42 @@ function loadPotion(numPotion){ //function for location of food
   }
   //food.push(newFood);
 }
-
-
+function loadPotion2(numPotion2){ //function for location of food
+  for(var i = 0; i < numPotion2; i++){
+  var min = 1;
+  var max = 39;
+  var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var loc = createVector(locX, locY);
+  var j = new Potion2(loc);
+  potion2.push(j);
+  }
+  //food.push(newFood);
+}
+function loadPotion(numPotion){ //function for location of food
+  for(var i = 0; i < numPotion; i++){
+  var min = 1;
+  var max = 39;
+  var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var loc = createVector(locX, locY);
+  var j = new Potion(loc);
+  potion.push(j);
+  }
+  //food.push(newFood);
+}
+function loadDiamond(numDiamond){ //function for location of food
+  for(var i = 0; i < numDiamond; i++){
+  var min = 1;
+  var max = 39;
+  var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
+  var loc = createVector(locX, locY);
+  var j = new Diamond(loc);
+  diamond.push(j);
+  }
+  //food.push(newFood);
+}
 function gameStart(){
   if(start == "true"){
     noStroke();
