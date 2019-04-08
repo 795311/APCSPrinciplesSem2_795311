@@ -10,7 +10,6 @@ function Rock(loc){
  this.render = function(){
    fill(91, 64, 24);
    image(img, this.loc.x, this.loc.y, img.width/20, img.height/20);
-  // rect(this.loc.x, this.loc.y, 20, 20);
  }
 
 }

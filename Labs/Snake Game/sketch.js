@@ -27,10 +27,8 @@ function setup(){
   img5 = loadImage("splashpotion.png");
   img6 = loadImage("splashSwift.gif");
   img7 = loadImage("background1.png");
-  img8 = loadImage("Diamond.png");
   loadSnake();
   loadFood(1);
-  loadDiamond(1);
   loadRock(25);
   loadPotion(1);
   loadPotion2(1);
@@ -57,14 +55,11 @@ function draw(){
   for(var i = 0; i < potion2.length; i++){
     potion2[i].run();
 }
-for(var i = 0; i < diamond.length; i++){
-  diamond[i].run();
-}
+
 checkLoc();
 checkPotion2();
 checkRock();
 checkPotion();
-checkDiamond();
 gameStart();
 deadGame();
 
@@ -85,22 +80,7 @@ function checkLoc(){ //eating the food, then splicing it once the snake collides
     }
   }
 }
-function checkDiamond(){ //eating the food, then splicing it once the snake collides
-  for(var i = 0; i < diamond.length; i++){
-    var distX = diamond[i].loc.x - snake.loc.x;
-    var distY = diamond[i].loc.y - snake.loc.y;
-    if(distX == (0) && distY == (0)){
-      //splices food(gets rid of food and puts it in new location)
-      diamond.splice(i, 1);
-      loadDiamond(1);
-      frameRate(10);
-      snake.segments.push(createVector(0, 0));
-      score = score + 5;
-      loadFood(5);
 
-    }
-  }
-}
 function checkRock(){ //hitting the rock then dying
   for(var i = 0; i < rock.length; i++){
     var distX = rock[i].loc.x - snake.loc.x;
@@ -207,7 +187,7 @@ function loadPotion2(numPotion2){ //function for location of food
   }
   //food.push(newFood);
 }
-function loadPotion(numPotion){ //function for location of food
+//function loadPotion(numPotion){ //function for location of food
   for(var i = 0; i < numPotion; i++){
   var min = 1;
   var max = 39;
@@ -216,27 +196,13 @@ function loadPotion(numPotion){ //function for location of food
   var loc = createVector(locX, locY);
   var j = new Potion(loc);
   potion.push(j);
-  }
-  //food.push(newFood);
 }
-function loadDiamond(numDiamond){ //function for location of food
-  for(var i = 0; i < numDiamond; i++){
-  var min = 1;
-  var max = 39;
-  var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
-  var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
-  var loc = createVector(locX, locY);
-  var j = new Diamond(loc);
-  diamond.push(j);
-  }
-  //food.push(newFood);
-}
+
 function gameStart(){
   if(start == "true"){
     noStroke();
     fill(141, 206, 113);
-    //inside rectangle
-    rect(800, 800)
+    rect(800, 800, 50, 50);
     fill(255, 255, 255);
     textAlign(CENTER);
     textSize(100);
@@ -253,7 +219,7 @@ function deadGame(){
     textAlign(CENTER);
     textSize(60);
     text("You Lose...", 400, 425)
-  rect(800,800)
+  rect(800,800, 50, 50);
   fill(255, 255, 255);
 
   }
