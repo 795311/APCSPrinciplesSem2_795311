@@ -5,13 +5,17 @@ var food = []; //food array
 var rock = [];
 var potion = [];
 var potion2 = [];
-var diamond = [];
+var tnt = [];
 var start = "true" //begins with start screen
 var font;
 var score = 0;
 var img;
 var numSeg = 1;
+var font;
 
+function preload(){
+  font = loadFont('Minecrafter.Reg.ttf');
+}
 
 function setup(){
   textAlign(CENTER, CENTER); //center text
@@ -27,11 +31,14 @@ function setup(){
   img5 = loadImage("splashpotion.png");
   img6 = loadImage("splashSwift.gif");
   img7 = loadImage("background1.png");
+  img8 = loadImage("Opening.png");
+  img9 = loadImage("tntgood.png");
   loadSnake();
   loadFood(1);
   loadRock(25);
   loadPotion(1);
   loadPotion2(1);
+  loadTnt(1);
 }
 
 function draw(){
@@ -55,10 +62,14 @@ function draw(){
   for(var i = 0; i < potion2.length; i++){
     potion2[i].run();
 }
+for(var i = 0; i < tnt.length; i++){
+  tnt[i].run();
+}
 
 checkLoc();
 checkPotion2();
 checkRock();
+checkTnt();
 checkPotion();
 gameStart();
 deadGame();
@@ -100,6 +111,17 @@ function checkPotion(){ //eating the potion, then lower the frame rate
       potion.splice(i, 1);
       loadPotion(1);
       frameRate(7);
+    }
+  }
+}
+function checkTnt(){ //eating the potion, then lower the frame rate
+  for(var i = 0; i < tnt.length; i++){
+    var distX = tnt[i].loc.x - snake.loc.x;
+    var distY = tnt[i].loc.y - snake.loc.y;
+    if(distX == (0) && distY == (0)){
+      tnt.splice(i, 1);
+      loadTnt(1);
+      rock.splice(i, 2);
     }
   }
 }
@@ -185,17 +207,17 @@ function loadPotion2(numPotion2){ //function for location of food
   var j = new Potion2(loc);
   potion2.push(j);
   }
-  //food.push(newFood);
 }
-//function loadPotion(numPotion){ //function for location of food
-  for(var i = 0; i < numPotion; i++){
+function loadTnt(numTnt){ //function for location of food
+  for(var i = 0; i < numTnt; i++){
   var min = 1;
   var max = 39;
   var locX = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
   var locY = (Math.floor(Math.random() * (max - min + 1) + min)) * w;
   var loc = createVector(locX, locY);
-  var j = new Potion(loc);
-  potion.push(j);
+  var j = new Tnt(loc);
+  tnt.push(j);
+  }
 }
 
 function gameStart(){
@@ -205,10 +227,12 @@ function gameStart(){
     rect(800, 800, 50, 50);
     fill(255, 255, 255);
     textAlign(CENTER);
-    textSize(100);
-    text("Snake", 400, 425)
+    //textSize(100);
+    //text("Snake", 400, 425)
     textSize(25);
-    text("Press 'W' to begin...", 400, 625)
+    textFont(font);
+    text("Press 'W' to begin...", 400, 625);
+    image(img8, 200, 125);
   }
 }
 function deadGame(){
@@ -218,7 +242,8 @@ function deadGame(){
     fill(255, 255, 255);
     textAlign(CENTER);
     textSize(60);
-    text("You Lose...", 400, 425)
+    textFont(font);
+    text("You Lose...", 430, 425)
   rect(800,800, 50, 50);
   fill(255, 255, 255);
 

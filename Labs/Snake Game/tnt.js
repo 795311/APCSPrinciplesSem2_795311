@@ -1,6 +1,5 @@
 
-
-function Potion(loc){
+function Tnt(loc){
   this.loc = loc;
 
   this.run = function(){
@@ -9,7 +8,7 @@ function Potion(loc){
 
  this.render = function(){
    fill(255, 0, 0);
-  image(img5, this.loc.x, this.loc.y, img.width/18, img.height/18);
+  image(img9, this.loc.x, this.loc.y, img.width/20, img.height/20);
  }
 
 }
