@@ -33,12 +33,14 @@ function setup(){
   img7 = loadImage("background1.png");
   img8 = loadImage("Opening.png");
   img9 = loadImage("tntgood.png");
+  song = loadSound("Wet Hands.mp3")
   loadSnake();
   loadFood(1);
   loadRock(25);
   loadPotion(1);
   loadPotion2(1);
   loadTnt(1);
+
 }
 
 function draw(){
